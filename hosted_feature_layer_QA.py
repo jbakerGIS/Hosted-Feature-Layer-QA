@@ -1,3 +1,50 @@
+"""
+----------------------------------------------------------------------
+ArcGIS Online Feature Layer QA Automation Script
+Author: Justin Bakerr
+Date: 2025-12-03
+----------------------------------------------------------------------
+
+Description:
+    This script connects to an ArcGIS Online (AGOL) hosted feature layer 
+    and performs a series of automated quality assurance (QA) checks on 
+    its attribute table and geometry. These checks include:
+
+        • Null value detection
+        • Duplicate value identification
+        • Coded-value domain validation
+        • Missing geometry detection
+
+    All issues discovered during the QA process are logged and exported 
+    as a CSV report, allowing quick identification and correctiion of
+    problems with the feature layer.
+
+Workflow:
+    1. Connect to AGOL using user credentials.
+    2. Retrieve the hosted feature layer by item ID.
+    3. Display layer metadata and confirm the correct layer.
+    4. Convert the feature layer to a Spatially Enabled DataFrame (SEDF).
+    5. Run each QA check and log issues.
+    6. Export a QA results CSV to the specified output directory.
+
+Dependencies:
+    • arcgis (ArcGIS API for Python)
+    • pandas
+    • datetime
+
+Use Case:
+    This script is designed for GIS analysts, data managers, and 
+    operations teams responsible for maintaining the integrity of 
+    enterprise geospatial datasets hosted in ArcGIS Online.
+
+Note:
+    This script requires valid AGOL credentials with access to the 
+    target feature layer. Ensure that you securely handle credentials 
+    and avoid committing sensitive information to version control.
+
+----------------------------------------------------------------------
+"""
+
 from arcgis.gis import GIS
 import pandas as pd
 from datetime import date
