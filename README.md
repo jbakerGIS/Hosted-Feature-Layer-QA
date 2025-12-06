@@ -1,7 +1,9 @@
 # ArcGIS Online Feature Layer QA Automation
 
-A Python-based quality assurance (QA) tool for validating the integrity of hosted feature layer data in **ArcGIS Online (AGOL)**.  
-This tool automates common data QA tasks such as identifying null attributes, detecting duplicate values, validating coded-value domains, and checking for missing geometries.  
+A Python-based quality assurance (QA) tool for validating the integrity of hosted feature layer data in **ArcGIS Online (AGOL)**.
+
+This tool automates common data QA tasks such as identifying null attributes, detecting duplicate values, validating coded-value domains, and checking for missing geometries.
+
 A final CSV report is generated summarizing all issues found.
 
 ---
