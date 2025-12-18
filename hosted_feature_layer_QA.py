@@ -50,6 +50,7 @@ import pandas as pd
 from datetime import date
 
 # Set input parameters
+# TODO add more specific instruction for updating input parameters
 ITEM_ID = "b7fd31c8206f4fdb9b66fcced3271e28"
 OUTPUT_PATH = r"C:/Users/viver/Documents/scripts/scrap"
 
