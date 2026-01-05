@@ -55,7 +55,7 @@ ITEM_ID = "b7fd31c8206f4fdb9b66fcced3271e28"
 OUTPUT_PATH = Path("./output/")
 
 # Connect to AGOL
-gis = GIS("https://www.arcgis.com", "Baker.jst", "Dr3amb!g")
+gis = GIS("https://www.arcgis.com", "USERNAME", "PASSWORD")
 
 # Access hosted feature layer by item ID
 fl_item = gis.content.get(ITEM_ID)
