@@ -51,7 +51,6 @@ from datetime import date
 from pathlib import Path
 
 # Set input parameters
-# TODO add more specific instruction for updating input parameters
 ITEM_ID = "b7fd31c8206f4fdb9b66fcced3271e28"
 OUTPUT_PATH = Path("./output/")
 
@@ -112,7 +111,7 @@ def add_issue(issue_type, field, oid, value=None, notes=None):
         "Notes": notes
     })
 
-# ==================== MAIN LOGIC ====================
+# ======================== MAIN LOGIC ===========================
 
 def null_check(df, fields):
     '''Check for null values in the feature layer table.'''
