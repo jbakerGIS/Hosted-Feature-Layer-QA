@@ -64,6 +64,7 @@ OUTPUT_PATH = Path("./output/")
 
 # Connect to AGOL
 gis = GIS("https://www.arcgis.com", "USERNAME", "PASSWORD")
+gis = GIS("https://www.arcgis.com", "USERNAME", "PASSWORD")
 
 # Access hosted feature layer by item ID
 fl_item = gis.content.get(ITEM_ID)
