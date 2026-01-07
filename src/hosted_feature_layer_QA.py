@@ -1,7 +1,7 @@
 """
 ----------------------------------------------------------------------
 ArcGIS Online Feature Layer QA Automation Script
-Author: Justin Bakerr
+Author: Justin Baker
 Date: 2025-12-03
 ----------------------------------------------------------------------
 
@@ -10,10 +10,10 @@ Description:
     and performs a series of automated quality assurance (QA) checks on 
     its attribute table and geometry. These checks include:
 
-        • Null value detection
-        • Duplicate value identification
-        • Coded-value domain validation
-        • Missing geometry detection
+        - Null value detection
+        - Duplicate value identification
+        - Coded-value domain validation
+        - Missing geometry detection
 
     All issues discovered during the QA process are logged and exported 
     as a CSV report, allowing quick identification and correctiion of
@@ -28,9 +28,9 @@ Workflow:
     6. Export a QA results CSV to the specified output directory.
 
 Dependencies:
-    • arcgis (ArcGIS API for Python)
-    • pandas
-    • datetime
+    - arcgis (ArcGIS API for Python)
+    - pandas
+    - datetime
 
 Use Case:
     This script is designed for GIS analysts, data managers, and 
@@ -50,13 +50,20 @@ import pandas as pd
 from datetime import date
 from pathlib import Path
 
+# -------------------------------------------------------------------
+# CONFIGURATION
+# -------------------------------------------------------------------
+
 # Set input parameters
-# TODO add more specific instruction for updating input parameters
 ITEM_ID = "b7fd31c8206f4fdb9b66fcced3271e28"
 OUTPUT_PATH = Path("./output/")
 
+# -------------------------------------------------------------------
+# LOGIN + FEATURE LAYER ACCESS
+# -------------------------------------------------------------------
+
 # Connect to AGOL
-gis = GIS("https://www.arcgis.com", "Baker.jst", "Dr3amb!g")
+gis = GIS("https://www.arcgis.com", "USERNAME", "PASSWORD")
 
 # Access hosted feature layer by item ID
 fl_item = gis.content.get(ITEM_ID)
@@ -69,7 +76,10 @@ layer_name = layer.properties.name
 print('\nBeginning QA check.../n')
 print(f'\nConnected to layer: {layer_name}\n')
 
-# Prompt user to confirm layer name before proceeding
+# -------------------------------------------------------------------
+# LAYER CONFIRMATION
+# -------------------------------------------------------------------
+
 def confirm_layer_details():
     '''Prompt user to confirm the correct layer details before proceeding with QA checks.'''
     while True:
@@ -82,6 +92,10 @@ def confirm_layer_details():
             return False
         else:
             print("Invalid input. Please enter 'y' or 'n'.")
+
+# -------------------------------------------------------------------
+# DATA PREPARATION
+# -------------------------------------------------------------------
 
 # Query all records
 feature = layer.query(where="1=1", out_fields="*", return_geometry=False)
@@ -102,8 +116,8 @@ for field in layer.properties.fields:
     field_list.append(field['name'])
     print(f"  Name: {field['name']}, Type: {field['type']}\n")
 
-# Helper function to add a QA issue to the output list
 def add_issue(issue_type, field, oid, value=None, notes=None):
+    '''Helper function to add a QA issue to the results list.'''
     qa_results.append({
         "IssueType": issue_type,
         "FieldName": field,
@@ -112,7 +126,9 @@ def add_issue(issue_type, field, oid, value=None, notes=None):
         "Notes": notes
     })
 
-# ==================== MAIN LOGIC ====================
+# -------------------------------------------------------------------
+# QA CHECK FUNCTIONS
+# -------------------------------------------------------------------
 
 def null_check(df, fields):
     '''Check for null values in the feature layer table.'''
@@ -215,6 +231,10 @@ def geometry_check(df):
     else:
        print("All features have valid geometry")
 
+# -------------------------------------------------------------------
+# QA REPORT CREATION
+# -------------------------------------------------------------------
+
 def create_qa_report(results):
     '''Create a QA report DataFrame from the results list and export it as a csv file.'''
 
@@ -236,6 +256,10 @@ def create_qa_report(results):
         print(f"QA report successfully saved to: {export_path}")
 
     print("\nQA Complete.")
+
+# -------------------------------------------------------------------
+# MAIN LOGIC
+# -------------------------------------------------------------------
 
 def main():
     '''Main function to run the script's logic'''
