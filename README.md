@@ -23,7 +23,7 @@ hosted-feature-layer-QA/
 │
 ├── .gitignore                     # Ignored files for Git
 ├── README.md                      # Project overview and instructions
-├── LICENSE                        # License (if included)
+├── LICENSE                        # License
 └── requirements.txt               # Python dependencies
 ```
 
