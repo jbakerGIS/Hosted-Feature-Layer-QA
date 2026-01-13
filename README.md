@@ -13,16 +13,15 @@ A final CSV report is generated summarizing all issues found.
 hosted-feature-layer-QA/
 │
 ├── notebooks/                       # Jupyter notebooks
-│   ├── exploratory_analysis.ipynb   # Exploration & prototyping
 │   └── hosted_feature_layer_QA.ipynb # Notebook version of main QA workflow
 │
 ├── output/                         # Script outputs
 │   └── <layer_name>_QA_<date>.csv   # Generated QA report(s)
 │
 ├── src/                            # Python modules / scripts
-│   └── qa_script.py                # Main QA script
+│   └── hosted_feature_layer_QA.py  # Main QA script
 │
-├── .gitignore                      # Ignored files for Git
+├── .gitignore                     # Ignored files for Git
 ├── README.md                      # Project overview and instructions
 ├── LICENSE                        # License (if included)
 └── requirements.txt               # Python dependencies
